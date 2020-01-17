@@ -15,6 +15,9 @@ namespace CheckPoint1
             SortArray(tabInt);
             Console.WriteLine("After sorting : ");
             DisplayTabOfInteger(tabInt);
+
+            Console.WriteLine("Have a nice day!");
+            Console.ReadKey();
         }
 
         static int[] GetIntegerArrayFromKeyboard()
@@ -27,10 +30,31 @@ namespace CheckPoint1
             for(int i = 0; i < numberDigit; i++)
             {
                 Console.Write("Enter number " + (i + 1) + " : ");
-                tabInt[i] = Convert.ToInt32(Console.ReadLine());
+                tabInt[i] = GetIntegerFromKeyboard();
             }
 
             return tabInt;
+        }
+
+        static int GetIntegerFromKeyboard()
+        {
+            bool isNotInteger = true;
+            int intFromKeyboard = 0;
+            while(isNotInteger)
+            {
+                try
+                {
+                    intFromKeyboard = Convert.ToInt32(Console.ReadLine());
+                    isNotInteger = false;
+                }
+                catch (Exception e)
+                {
+                    Console.Write("/!\\ Error, please enter a valide integer : ");
+                }
+            }
+
+            return intFromKeyboard;
+            
         }
 
         static int ArraySum(int[] tabInt)
